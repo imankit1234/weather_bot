@@ -12,7 +12,7 @@ app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
 
-const token = "6728581132:AAHWeYd4jjlXeuO92fScDz9vUtR2RCtxv_Y";
+const token = "Your telegram bot api token ";
 
 const bot = new TelegramBot(token, { polling: true });
 
@@ -22,8 +22,9 @@ bot.on("message", async (msg) => {
 
   try {
     const response = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${userInput}&appid=197ec6021b5b93af156acdd19554b8c5`
+      `https://api.openweathermap.org/data/2.5/weather?q=${userInput}&appid="openweather api key"`
     );
+    //remove "" after api id , it should be like &appid = api_key
     const data = response.data;
     const weather = data.weather[0].description;
     const temperature = data.main.temp - 273.15;
